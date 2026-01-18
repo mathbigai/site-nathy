@@ -1,0 +1,178 @@
+.hero {
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  font-family: 'Outfit', sans-serif;
+  color: var(--text);
+  overflow: hidden;
+
+  /* ===================================================
+     DESKTOP – EXPERIÊNCIA IMERSIVA
+     =================================================== */
+  @media (min-width: 1024px) {
+    height: 100vh;
+
+    &__scroll {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__track {
+      position: relative;
+    }
+
+    &__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    &__waves {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    &__slide {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      gap: 4vw;
+
+      padding: 0 6vw;
+      z-index: 4;
+    }
+
+    &__image {
+      width: 60%;
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+
+    &__text {
+      width: 40%;
+
+      h1 {
+        font-size: clamp(2.6rem, 5vw, 4rem);
+        line-height: 1.15;
+        font-weight: 600;
+      }
+    }
+
+    &__slide--right {
+      flex-direction: row;
+      text-align: left;
+    }
+
+    &__slide--left {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    &__slide--center {
+      justify-content: center;
+      text-align: center;
+
+      .hero__text {
+        position: absolute;
+        bottom: 15%;
+        width: 100%;
+      }
+    }
+  }
+
+  /* ===================================================
+     MOBILE & TABLET – 100vh NATURAL
+     =================================================== */
+  @media (max-width: 1023px) {
+    height: 100vh;
+    overflow: hidden;
+
+    &__scroll {
+      height: 100%;
+      overflow: visible;
+    }
+
+    &__track {
+      position: relative;
+      height: 100%;
+    }
+
+    &__sticky {
+      position: relative;
+      height: 100%;
+    }
+
+    &__waves {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &__slide {
+      position: relative;
+
+      min-height: 100vh;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 24px;
+      padding: 96px 6vw 64px;
+      text-align: center;
+
+      z-index: 2;
+    }
+
+    &__image {
+      width: 100%;
+      height: 650px; // ✅ conforme pedido
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+
+    &__text {
+      width: 100%;
+
+      h1 {
+        font-size: clamp(2rem, 6vw, 2.6rem);
+        line-height: 1.2;
+        font-weight: 600;
+      }
+    }
+
+    /* Neutraliza alinhamentos */
+    &__slide--left,
+    &__slide--right,
+    &__slide--center {
+      flex-direction: column;
+      text-align: center;
+
+      .hero__text {
+        position: relative;
+        bottom: auto;
+      }
+    }
+  }
+}

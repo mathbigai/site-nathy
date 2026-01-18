@@ -1,0 +1,14 @@
+@use './base/reset';
+@use './base/themes';
+@use './base/variables';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background variables.$transition, color variables.$transition;
+}
