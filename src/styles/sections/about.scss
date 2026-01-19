@@ -1,0 +1,400 @@
+.about {
+  padding: clamp(64px, 7vw, 110px) 6vw;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.about__wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* “caderno” com profundidade */
+.about__notebook {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden; /* mantém o notebook recortado, não as páginas */
+  box-shadow:
+    0 26px 80px rgba(0, 0, 0, 0.22),
+    0 2px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+/* fundo tipo mesa */
+.about__desk {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.08), transparent 52%),
+    radial-gradient(120% 90% at 50% 100%, rgba(0, 0, 0, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+/* duas páginas com MESMO tamanho e alinhamento */
+.about__spread {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.8vw, 18px);
+  padding: clamp(14px, 2vw, 20px);
+  align-items: stretch; /* força as páginas a terem mesma altura */
+}
+
+/* lombada/miolo */
+.about__spine {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  bottom: 18px;
+  width: 26px;
+  transform: translateX(-50%);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(255, 255, 255, 0.06)),
+    repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 2px,
+      transparent 2px,
+      transparent 12px
+    );
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.about__page {
+  min-height: 620px;
+  display: flex; /* estica o papel igual nas duas colunas */
+}
+
+/* “papel” */
+.about__paper {
+  position: relative;
+  flex: 1;
+  border-radius: 18px;
+  padding: 22px 22px 20px 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.72));
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  color: #0f172a;
+  overflow: visible; /* permite a foto 2 sair sem ser cortada */
+}
+
+/* modo escuro: papel */
+[data-theme='dark'] .about__paper {
+  background: linear-gradient(180deg, rgba(20, 22, 26, 0.82), rgba(18, 20, 24, 0.72));
+  color: #e5e7eb;
+}
+
+/* margem esquerda (linha vermelha) */
+.about__margin {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22px;
+  width: 2px;
+  background: rgba(180, 60, 60, 0.45);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='dark'] .about__margin {
+  background: rgba(210, 70, 70, 0.55);
+}
+
+/* linhas do caderno */
+.about__rules {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(20, 30, 40, 0.08) 0px,
+      rgba(20, 30, 40, 0.08) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='dark'] .about__rules {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(240, 245, 255, 0.08) 0px,
+      rgba(240, 245, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
+/* garante conteúdo acima das linhas */
+.about__paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* FOTO 1 + CLIPE */
+.about__photoWrap {
+  position: relative;
+  width: min(260px, 100%); /* menor que antes */
+  margin-left: 18px;
+}
+
+.about__photo {
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1; /* mais contida */
+  max-height: 260px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
+  transform: rotate(-1.2deg);
+}
+
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* clipe (presa só na foto) */
+.about__clip {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  width: 36px;
+  height: 74px;
+  border-radius: 18px;
+  border: 3px solid rgba(200, 140, 60, 0.95);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.about__clip::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  width: 18px;
+  height: 48px;
+  transform: translateX(-50%);
+  border-radius: 14px;
+  border: 3px solid rgba(200, 140, 60, 0.65);
+}
+
+/* identidade abaixo da foto */
+.about__identity {
+  margin-top: 16px;
+  margin-left: 18px;
+}
+
+.about__name {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.about__role {
+  margin: 6px 0 0;
+  opacity: 0.75;
+}
+
+/* meta estilo “ficha” */
+.about__meta {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.about__metaRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(20, 30, 40, 0.18);
+
+  dt {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  dd {
+    margin-left: 20px;
+    font-weight: 550;
+  }
+}
+
+[data-theme='dark'] .about__metaRow {
+  border-bottom: 1px dashed rgba(240, 245, 255, 0.16);
+}
+
+/* notas seguindo o caderno */
+.about__notes {
+  margin-top: 18px;
+  margin-left: 18px;
+
+  p {
+    margin: 0;
+    padding: 8px 0;
+    line-height: 28px;
+    font-size: 1.02rem;
+  }
+}
+
+.about__soft {
+  opacity: 0.75;
+}
+
+/* página direita */
+.about__header {
+  margin-left: 18px;
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin: 10px 0 0;
+    opacity: 0.75;
+    line-height: 28px;
+  }
+}
+
+.about__bullets {
+  margin: 14px 0 0 36px;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+
+  li {
+    line-height: 28px;
+  }
+}
+
+/* FOTO 2 “saindo” da página */
+.about__snapshot {
+  position: relative;
+  width: min(360px, 100%);
+  margin: 18px 0 0 auto;
+  border-radius: 16px;
+  overflow: hidden; /* corta só dentro da foto */
+  transform: rotate(4deg);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.24);
+  translate: 22px 10px; /* sai um pouco da página */
+  z-index: 3; /* fica acima do papel */
+}
+
+.about__snapshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* fitas */
+.about__tape {
+  position: absolute;
+  width: 120px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(235, 210, 120, 0.62);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+  opacity: 0.95;
+}
+
+.about__tape--a {
+  top: -12px;
+  left: 18px;
+  transform: rotate(-10deg);
+}
+
+.about__tape--b {
+  bottom: -12px;
+  right: 18px;
+  transform: rotate(8deg);
+}
+
+[data-theme='dark'] .about__tape {
+  background: rgba(235, 210, 120, 0.28);
+}
+
+/* CTA */
+.about__cta {
+  margin: 22px 0 0 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.about__ctaText {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+}
+
+.about__button {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(10px);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.about__button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+/* RESPONSIVO */
+@media (max-width: 980px) {
+  .about__spread {
+    grid-template-columns: 1fr;
+  }
+
+  .about__spine {
+    display: none;
+  }
+
+  .about__page {
+    min-height: unset;
+  }
+
+  /* no mobile, evita vazar pra fora do "caderno" */
+  .about__paper {
+    overflow: hidden;
+  }
+
+  .about__snapshot {
+    translate: 0 0;
+    margin: 18px auto 0;
+    transform: rotate(3deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .about__metaRow {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .about__button {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
