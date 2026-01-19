@@ -5,9 +5,6 @@
   color: var(--text);
   overflow: hidden;
 
-  /* ===================================================
-     DESKTOP – EXPERIÊNCIA IMERSIVA
-     =================================================== */
   @media (min-width: 1024px) {
     height: 100vh;
 
@@ -95,9 +92,6 @@
     }
   }
 
-  /* ===================================================
-     MOBILE & TABLET – 100vh NATURAL
-     =================================================== */
   @media (max-width: 1023px) {
     height: 100vh;
     overflow: hidden;
