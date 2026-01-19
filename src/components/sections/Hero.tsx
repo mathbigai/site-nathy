@@ -12,7 +12,7 @@ export default function Hero() {
   })
 
   // progresso só vai de 0 → 1 (nunca volta)
-  const progress = useTransform(scrollYProgress, [0, 0.7], [0, 1], {
+  const progress = useTransform(scrollYProgress, [0, 0.95], [0, 1], {
     clamp: true
   })
 
@@ -22,14 +22,20 @@ export default function Hero() {
         <div className="hero-text-scroll__content">
           <h1>
             <ScrambledText
-              text="Psicoterapia com acolhimento"
+              text="Você se sente um estranho no mundo?"
               progress={progress}
             />
           </h1>
 
           <p>
             <ScrambledText
-              text="Um espaço seguro para escuta, cuidado e transformação emocional."
+              text="Talvez você não esteja errado, apenas esteja tentando se encaixar da forma como os outros esperam e não como você realmente é."
+              progress={progress}
+            />
+          </p>
+          <p>
+            <ScrambledText
+              text="A terapia pode ser um espaço onde existir tenha menos peso, onde você não precise se explicar o tempo todo e possa, aos poucos, se sentir em casa dentro de si."
               progress={progress}
             />
           </p>

@@ -2,7 +2,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
 import Hero from './components/sections/Hero'
-import Sobre from './components/sections/Sobre'
+import About from './components/sections/About'
 import Abordagem from './components/sections/Abordagem'
 import Servicos from './components/sections/Servicos'
 import CTA from './components/sections/CTA'
@@ -17,7 +17,7 @@ function App() {
 
       <main>
         <Hero />
-        <Sobre />
+        <About />
         <Abordagem />
         <Servicos />
         <CTA />
