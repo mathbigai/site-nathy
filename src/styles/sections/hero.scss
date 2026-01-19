@@ -1,10 +1,9 @@
 .hero-text-scroll {
   position: relative;
-  height: 180vh;
+  height: 220vh;
   background: var(--bg);
 }
 
-/* 🔒 trava o texto dentro da seção */
 .hero-text-scroll__sticky {
   position: sticky;
   top: 0;
@@ -15,35 +14,60 @@
   justify-content: center;
 }
 
-/* 📄 conteúdo visual */
 .hero-text-scroll__content {
-  max-width: 1000px;
-  padding: 0 6vw;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
+
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .hero-text-scroll__content h1 {
-  font-size: clamp(2.6rem, 5vw, 4rem);
-  line-height: 1.15;
-  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.12;
+  font-weight: 650;
+  letter-spacing: -0.02em;
   color: var(--text);
 }
 
 .hero-text-scroll__content p {
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text-soft);
 }
 
-/* 📱 MOBILE: sem efeito complexo */
+.scrambled-text__word {
+  white-space: nowrap;
+}
+
+.scrambled-text__char {
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
   .hero-text-scroll {
-    height: 100vh;
+    height: 160vh; // menos scroll no mobile
   }
 
   .hero-text-scroll__sticky {
-    position: relative;
-    height: auto;
+    padding: 0 6vw;
+  }
+
+  .hero-text-scroll__content {
+    max-width: 560px;
+  }
+
+  .hero-text-scroll__content h1 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    line-height: 1.15;
+  }
+
+  .hero-text-scroll__content p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
