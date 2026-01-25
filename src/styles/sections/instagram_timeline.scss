@@ -1,0 +1,186 @@
+.igTL {
+  padding: 84px 0;
+  background: var(--bg);
+  color: var(--text);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  &__eyebrow {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.75;
+    margin: 0 0 10px 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    line-height: 1.15;
+  }
+
+  &__subtitle {
+    margin: 12px auto 0;
+    max-width: 62ch;
+    opacity: 0.85;
+  }
+
+  /* ===== LISTA HORIZONTAL (wrap) ===== */
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  /* ===== CARD ===== */
+  &__card {
+    width: 100%;
+    max-width: 360px;
+
+    background: color-mix(in srgb, var(--bg) 75%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    border-radius: 18px;
+    padding: 14px;
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px color-mix(in srgb, #000 12%, transparent);
+  }
+
+  /* Wrapper do embed (segura o layout) */
+  &__embedWrap {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  /* Placeholder leve */
+  &__placeholder {
+    width: 100%;
+    height: 220px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+    opacity: 0.75;
+
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--text) 14%, transparent);
+  }
+
+  /* opcional: dá um “orgânico” (sem cara de grade perfeita) */
+  &__item:nth-child(odd) {
+    transform: translateY(6px);
+  }
+
+  @media (hover: hover) {
+    &__card {
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    &__card:hover {
+      transform: translateY(-4px);
+      opacity: 0.98;
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__list {
+      gap: 16px;
+    }
+
+    &__card {
+      max-width: 420px; /* ocupa melhor no mobile */
+    }
+
+    &__placeholder {
+      height: 210px;
+    }
+  }
+
+    /* ===== ICON LINK (base) ===== */
+  &__icon-link {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+
+    text-decoration: none;
+    color: var(--text);
+
+    cursor: pointer;
+    opacity: 0.95;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(46, 64, 255, 0.35);
+      outline-offset: 6px;
+    }
+
+    /* se você quiser esconder ícones no mobile (já tem social no menu) */
+    &--desktop {
+      @media (max-width: 900px) {
+        display: none;
+      }
+    }
+  }
+
+  &__icon {
+    width: 30px;
+    height: 25px;
+    fill: currentColor;
+  }
+
+  /* ===== Instagram chamativo ===== */
+  &__icon-link {
+    width: 300px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    box-shadow: 0 4px 12px rgba(214, 41, 118, 0.25);
+    color: #fff;
+    margin: 18px auto 0;
+
+    &:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow:
+        0 6px 20px rgba(214, 41, 118, 0.45),
+        0 0 0 6px rgba(214, 41, 118, 0.15);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(214, 41, 118, 0.45);
+      outline-offset: 6px;
+    }
+  }
+}
