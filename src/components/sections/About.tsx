@@ -114,9 +114,6 @@ export default function About() {
                   <p className="about__ctaText">
                     Se isso ressoou com você, talvez seja um bom começo.
                   </p>
-                  <a className="about__button" href="#contato">
-                    Agendar uma conversa
-                  </a>
                 </div>
               </div>
             </article>
