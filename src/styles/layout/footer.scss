@@ -1,0 +1,102 @@
+.footer {
+  background: color-mix(in srgb, var(--bg) 92%, #000);
+  color: var(--text);
+  margin-top: 96px;
+
+  &__container {
+    width: min(1150px, 92vw);
+    margin: 0 auto;
+    padding: 64px 0;
+
+    display: flex;
+    gap: 48px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  /* ===== BRAND ===== */
+  &__brand {
+    display: grid;
+    gap: 6px;
+    min-width: 220px;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  &__role {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  &__crp {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.65;
+  }
+
+  /* ===== CONTACT / INFO ===== */
+  &__contact,
+  &__info {
+    display: grid;
+    gap: 8px;
+    min-width: 220px;
+  }
+
+  &__title {
+    font-weight: 650;
+    margin-bottom: 6px;
+  }
+
+  &__link {
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.85;
+
+    &:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+  }
+
+  /* ===== BOTTOM ===== */
+  &__bottom {
+    border-top: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+    padding: 18px 6vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  &__dev a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 680px) {
+    &__container {
+      padding: 48px 0;
+      gap: 32px;
+    }
+
+    &__bottom {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
