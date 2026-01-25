@@ -46,3 +46,61 @@ body {
   height: 26px;
   background: url('/icons/whatsapp.svg') center / contain no-repeat;
 }
+
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 999;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  display: none; /* só mobile */
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text);
+
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 14px 28px color-mix(in srgb, #000 18%, transparent);
+
+  opacity: 0.68;
+  pointer-events: none; /* garante que não é clicável */
+  user-select: none;
+
+  animation: scrollHintFloat 1.25s ease-in-out infinite;
+
+  &__icon {
+    display: block;
+  }
+}
+
+@keyframes scrollHintFloat {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-7px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint {
+    animation: none;
+  }
+}

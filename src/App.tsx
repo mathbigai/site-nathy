@@ -7,11 +7,13 @@ import Approach from './components/sections/Approach'
 import Navbar from './components/layout/Navbar'
 import WhatsAppFloating from './components/ui/WhatsAppFloating'
 import InstagramTimeline from './components/sections/InstagramTimeline'
+import ScrollHint from './components/ui/ScrollHint'
 
 function App() {
   return (
     <>
       <WhatsAppFloating phone="5565992191866" />
+      <ScrollHint />
       <Navbar />
       <Header />
 
