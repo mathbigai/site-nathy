@@ -16,7 +16,9 @@ const slides = [
         title: 'Ansiedade não precisa mandar no seu dia.',
         subtitle:
             'Terapia para organizar pensamentos, acolher emoções e retomar o controle no seu ritmo.',
-        cta: { label: 'Agendar uma conversa', href: '#contato' }
+        cta: { label: 'Agendar uma conversa', href: 'https://wa.me/5565992191866' },
+        target: '_blank',
+        rel: 'noreferrer',
     },
     {
         id: 2,
@@ -25,7 +27,9 @@ const slides = [
         title: 'ACT: mais flexibilidade emocional, menos luta interna.',
         subtitle:
             'Aprenda a se relacionar melhor com pensamentos e sentimentos — e agir alinhado aos seus valores.',
-        cta: { label: 'Como funciona', href: '#sobre' }
+        cta: { label: 'Como funciona', href: '#sobre' },
+        target: '',
+        rel: '',
     },
     {
         id: 3,
@@ -34,7 +38,9 @@ const slides = [
         title: 'Atendimento online e presencial.',
         subtitle:
             'Sessões com acolhimento e um acompanhamento claro, respeitando sua história e seu tempo.',
-        cta: { label: 'Ver horários', href: '#contato' }
+        cta: { label: 'Ver horários', href: 'https://wa.me/5565992191866' },
+        target: '_blank',
+        rel: 'noreferrer',
     }
 ] as const
 
@@ -127,7 +133,7 @@ export default function Header() {
                                     <h1>{slides[activeSlide].title}</h1>
                                     <p>{slides[activeSlide].subtitle}</p>
 
-                                    <a className="hero__cta" href={slides[activeSlide].cta.href}>
+                                    <a className="hero__cta" href={slides[activeSlide].cta.href} target={slides[activeSlide].target} rel={slides[activeSlide].rel}>
                                         {slides[activeSlide].cta.label}
                                     </a>
                                 </div>
