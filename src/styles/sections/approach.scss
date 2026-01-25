@@ -1,0 +1,255 @@
+.approach {
+  padding: 96px 0;
+  background: var(--bg);
+  color: var(--text);
+
+  &__container {
+    width: min(1150px, 92vw);
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__eyebrow {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.75;
+    margin: 0 0 10px 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    line-height: 1.15;
+  }
+
+  &__subtitle {
+    margin: 14px auto 0;
+    max-width: 62ch;
+    opacity: 0.85;
+  }
+
+  &__timeline {
+    position: relative;
+    padding: 10px 0;
+  }
+
+  /* ===== Centro ===== */
+  &__center {
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+  }
+
+  &__waves-vertical,
+  &__waves-stretch,
+  &__splashes {
+    position: absolute;
+    inset: 0;
+        overflow: hidden;
+  }
+
+  &__waves-rotate {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) scale(2.2);
+    transform-origin: center;
+    opacity: 0.08;
+    filter: saturate(1.05);
+  }
+
+  &__splash {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--primary) 65%, transparent);
+  }
+
+  /* ===== LISTA ===== */
+  &__list {
+    position: relative;
+    z-index: 1;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ===== ITEM ===== */
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 0;
+
+    &--right {
+        justify-content: flex-end;
+    }
+
+    &--left {
+        flex-direction: row-reverse !important;
+        justify-content: flex-end;
+    }
+  }
+
+  /* ===== CARD ===== */
+  &__card {
+    background: color-mix(in srgb, var(--bg) 75%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    border-radius: 18px;
+    padding: 22px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px color-mix(in srgb, #000 12%, transparent);
+
+    width: 100%;
+    max-width: 520px;
+  }
+
+  &__card-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 650;
+  }
+
+  &__summary {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+    opacity: 0.9;
+
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  &__toggle {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 2px;
+
+    font-weight: 650;
+    color: var(--primary);
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__details {
+    overflow: hidden;
+  }
+
+  &__details-inner {
+    margin-top: 12px;
+
+    p {
+      margin: 0 0 10px 0;
+      line-height: 1.6;
+      opacity: 0.9;
+
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /* ===== DESKTOP ===== */
+  @media (min-width: 980px) {
+    --approach-card-pad: 22px;
+
+    &__item {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0;
+      padding: 22px 0;
+    }
+
+    /* esquerda / centro / direita */
+    &__side {
+      flex: 1;
+      display: flex;
+    }
+
+    &__side--left {
+      justify-content: flex-end;
+      padding-right: 24px;
+      text-align: right;
+    }
+
+    &__side--right {
+      justify-content: flex-start;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    /* PIN */
+    &__pin {
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-self: stretch;
+    }
+
+    &__icon {
+      margin-top: calc(var(--approach-card-pad) + 2px);
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 28px color-mix(in srgb, #000 14%, transparent);
+    }
+
+    &__icon-svg {
+      font-size: 28px;
+      color: var(--primary);
+      filter: drop-shadow(0 10px 14px color-mix(in srgb, #000 18%, transparent));
+    }
+
+    &__card {
+      padding: var(--approach-card-pad);
+    }
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 979px) {
+    &__center {
+      display: none;
+    }
+
+    &__card {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    &__pin {
+        display: none;
+    }
+  }
+}
