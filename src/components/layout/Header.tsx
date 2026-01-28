@@ -13,7 +13,7 @@ const slides = [
         id: 1,
         image: slide1,
         align: 'left',
-        title: 'Ansiedade não precisa mandar no seu dia.',
+        title: 'Sua desregulação não precida acabar com todos os seus dias.',
         subtitle:
             'Terapia para organizar pensamentos, acolher emoções e retomar o controle no seu ritmo.',
         cta: { label: 'Agendar uma conversa', href: 'https://wa.me/5565992191866' },
@@ -72,30 +72,39 @@ export default function Header() {
     }, [])
 
     useEffect(() => {
-        function isDesktop() {
-            return window.matchMedia('(min-width: 1024px)').matches
-        }
+        const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches
+        const isMobile = () => window.matchMedia('(max-width: 1023px)').matches
 
         const interval = window.setInterval(() => {
-            if (!isDesktop()) return
             if (isHoveringRef.current) return
             if (Date.now() < pauseUntilRef.current) return
 
-            setActiveSlide(prev => (prev + 1) % slides.length)
+            // ✅ DESKTOP: mantém seu comportamento (scroll + slide)
+            if (isDesktop()) {
+                setActiveSlide(prev => {
+                    const next = (prev + 1) % slides.length
 
-            // mantém a barra de scroll sincronizada com o slide (se estiver usando scroll container)
-            const el = scrollRef.current
-            if (el) {
-                el.scrollTo({
-                    top: (activeSlide + 1) % slides.length * window.innerHeight,
-                    behavior: 'smooth'
+                    const el = scrollRef.current
+                    if (el) {
+                        el.scrollTo({
+                            top: next * window.innerHeight,
+                            behavior: 'smooth'
+                        })
+                    }
+
+                    return next
                 })
+                return
+            }
+
+            // ✅ MOBILE: só troca o slide (sem scroll container)
+            if (isMobile()) {
+                setActiveSlide(prev => (prev + 1) % slides.length)
             }
         }, 6500)
 
         return () => window.clearInterval(interval)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeSlide])
+    }, [])
 
     return (
         <header
