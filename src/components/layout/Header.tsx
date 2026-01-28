@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
-import slide1 from '../../assets/images/header/slide1.png'
-import slide2 from '../../assets/images/header/slide2.png'
-import slide3 from '../../assets/images/header/slide3.png'
+import slide1 from '../../assets/images/header/slide1.webp'
+import slide2 from '../../assets/images/header/slide2.webp'
+import slide3 from '../../assets/images/header/slide3.webp'
 
 import '../../styles/layout/header.scss'
 import WavesBackground from '../ui/WavesBackground'
