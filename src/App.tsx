@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <WhatsAppFloating phone="5565992191866" />
-      <ScrollHint />
+      <ScrollHint footerSelector=".footer" />
       <Navbar />
       <Header />
 

@@ -14,10 +14,11 @@ body {
   transition: background variables.$transition, color variables.$transition;
 }
 
+/* ===== WhatsApp fixo ===== */
 .whatsapp-float {
   position: fixed;
   right: 22px;
-  bottom: 22px;
+  bottom: calc(22px + env(safe-area-inset-bottom));
   width: 56px;
   height: 56px;
   border-radius: 999px;
@@ -47,18 +48,17 @@ body {
   background: url('/icons/whatsapp.svg') center / contain no-repeat;
 }
 
+/* ===== Setinha “scroll hint” (mobile) ===== */
 .scroll-hint {
   position: fixed;
   left: 50%;
-  bottom: calc(16px + env(safe-area-inset-bottom));
-  transform: translateX(-50%);
   z-index: 999;
 
   width: 44px;
   height: 44px;
   border-radius: 999px;
 
-  display: none; /* só mobile */
+  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -71,13 +71,26 @@ body {
   box-shadow: 0 14px 28px color-mix(in srgb, #000 18%, transparent);
 
   opacity: 0.68;
-  pointer-events: none; /* garante que não é clicável */
+  pointer-events: none;
   user-select: none;
 
   animation: scrollHintFloat 1.25s ease-in-out infinite;
 
+  bottom: calc(var(--scroll-hint-bottom, 16px) + env(safe-area-inset-bottom));
+  transition: bottom 0.18s ease;
+
   &__icon {
     display: block;
+    transition: transform 0.25s ease;
+  }
+
+  /* quando chegar no final da página (classe aplicada via JS/React) */
+  &--up {
+    animation: scrollHintFloatUp 1.25s ease-in-out infinite;
+
+    .scroll-hint__icon {
+      transform: rotate(180deg);
+    }
   }
 }
 
@@ -85,22 +98,40 @@ body {
   0% {
     transform: translateX(-50%) translateY(0);
   }
+
   50% {
     transform: translateX(-50%) translateY(-7px);
   }
+
   100% {
     transform: translateX(-50%) translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .scroll-hint {
-    display: inline-flex;
+@keyframes scrollHintFloatUp {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(7px);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-hint {
     animation: none;
+
+    &--up {
+      animation: none;
+    }
+  }
+
+  .whatsapp-float {
+    transition: none;
   }
 }
