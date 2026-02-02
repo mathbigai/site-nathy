@@ -23,12 +23,12 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://wa.me/5565992191866"
+            href="https://wa.me/5565996196457"
             target="_blank"
             rel="noreferrer"
             className="footer__link"
           >
-            WhatsApp: (65) 9 9219-1866
+            WhatsApp: (65) 9 9619-6457
           </a>
         </div>
 

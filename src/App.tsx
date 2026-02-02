@@ -12,7 +12,7 @@ import ScrollHint from './components/ui/ScrollHint'
 function App() {
   return (
     <>
-      <WhatsAppFloating phone="5565992191866" />
+      <WhatsAppFloating phone="5565996196457" />
       <ScrollHint footerSelector=".footer" />
       <Navbar />
       <Header />
